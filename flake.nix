@@ -46,8 +46,9 @@
     formatter = forAllPkgs (pkgs: pkgs.alejandra);
 
     templates = {
-      flake-parts = ./template/flake-parts;
-      flake-utils = ./template/flake-utils;
+      flake-parts = ./templates/flake-parts;
+      flake-utils = ./templates/flake-utils;
+      json = ./templates/json-conf;
     };
   };
 }
