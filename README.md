@@ -41,6 +41,8 @@ This is an example `tasx.json` configuration file:
 }
 ```
 
+All elements in `globalEnv` and `env` will be resolved to corresponding packages in Nixpkgs.
+
 You can import this JSON file with `tasx.lib.mkOutputs` in your flake.
 ```nix
 {
