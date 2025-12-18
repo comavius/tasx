@@ -1,0 +1,21 @@
+{
+    "globalEnv": [
+        "hello"
+    ],
+    "enableGitPlugin": true,
+    "tasks": {
+        "greet1": {
+            "cmd": "hello"
+        },
+        "greet2": "hello",
+        "greet3": {
+            "cmd": "cowsay Hello, World!",
+            "env": [
+                "cowsay"
+            ]
+        },
+        "printGitRoot": {
+            "cmd": "in-git-root pwd"
+        }
+    }
+}
