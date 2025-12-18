@@ -1,0 +1,5 @@
+{usage-heading} {usage}
+
+{all-args}{after-help}
+
+If you need to debug nix derivations, run `nix run ".#tasx:<TASX_TARGET>" -- <ARGS>`
