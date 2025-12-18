@@ -3,6 +3,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     tasx.url = "github:comavius/tasx";
+    tasx.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -18,6 +19,9 @@
       in {
         apps = tasx.lib.mkApps {
           inherit pkgs tasxConf;
+        };
+        devShells.default = pkgs.mkShell {
+          buildInputs = [tasx.packages."${system}".default];
         };
       }
     );

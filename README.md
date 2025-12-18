@@ -7,6 +7,8 @@ Tasx supports two configuration styles: JSON and Nix expression. With Nix expres
 Also, tasx provides a command-line tool to run tasks defined more conveniently.
 ```bash
 tasx <task-name>
+# The command above is equivalent to
+nix run ".#tasx:<task-name>"
 # installing tasx via nix
 nix profile install "github:comavius/tasx"
 # or running tasx once without installation
@@ -45,6 +47,7 @@ You can import this JSON file with `tasx.lib.mkOutputs` in your flake.
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     tasx.url = "github:comavius/tasx";
+    tasx.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs:
@@ -100,6 +103,7 @@ This is an example `tasx.nix` configuration file:
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     tasx.url = "github:comavius/tasx";
+    tasx.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -116,6 +120,9 @@ This is an example `tasx.nix` configuration file:
         apps = tasx.lib.mkApps {
           inherit pkgs tasxConf;
         };
+        devShells.default = pkgs.mkShell {
+          buildInputs = [tasx.packages."${system}".default];
+        };
       }
     );
 }
@@ -129,6 +136,7 @@ This is an example `tasx.nix` configuration file:
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     tasx.url = "github:comavius/tasx";
+    tasx.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
@@ -149,6 +157,9 @@ This is an example `tasx.nix` configuration file:
       ];
       perSystem = {pkgs, ...}: {
         tasx = import ./tasx.nix {inherit pkgs;};
+        devShells.default = pkgs.mkShell {
+          buildInputs = [tasx.packages."${system}".default];
+        };
       };
     });
 }

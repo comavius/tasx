@@ -3,6 +3,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     tasx.url = "github:comavius/tasx";
+    tasx.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
@@ -24,8 +25,15 @@
         "armv6l-linux"
         "armv7l-linux"
       ];
-      perSystem = {pkgs, ...}: {
+      perSystem = {
+        pkgs,
+        system,
+        ...
+      }: {
         tasx = import ./tasx.nix {inherit pkgs;};
+        devShells.default = pkgs.mkShell {
+          buildInputs = [tasx.packages."${system}".default];
+        };
       };
     });
 }
