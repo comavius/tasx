@@ -7,7 +7,7 @@
     enableGitPlugin = lib.mkEnableOption "Enable Git plugin for tasx.";
 
     tasks = lib.mkOption {
-      type = lib.types.attrsOf (
+      type = lib.types.lazyAttrsOf (
         lib.types.oneOf [
           lib.types.str
           (

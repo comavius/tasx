@@ -17,7 +17,7 @@
   tasks = lib.mkOption {
     default = {};
     description = "Task definitions for tasx.";
-    type = lib.types.attrsOf (
+    type = lib.types.lazyAttrsOf (
       lib.types.oneOf [
         lib.types.str
         (
