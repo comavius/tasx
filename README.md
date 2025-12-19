@@ -1,6 +1,17 @@
 # Tasx: Tiny Task Runner with Nix-Flakes
 Tasx is a task runner and minimal wrapper library around Nix Flakes, providing beginner-friendly but highly programmable interfaces and deterministic task execution.
 
+## Quick Start
+To get started with tasx, you can create a simple flake using the following command:
+```bash
+# for flake-utils
+nix flake init -t "github:comavius/tasx#flake-utils"
+# for flake-parts
+nix flake init -t "github:comavius/tasx#flake-parts"
+# for JSON configuration mode
+nix flake init -t "github:comavius/tasx#json"
+```
+
 ## Usage
 Tasx supports two configuration styles: JSON and Nix expression. With Nix expression style, it offers `tasx.lib.mkApps` and `tasx.lib.flakeModule`, allowing seamless integration with both `flake-utils` and `flake-parts`.
 
