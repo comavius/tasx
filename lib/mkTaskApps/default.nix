@@ -7,7 +7,7 @@
   mkTaskApp = callPackage (import ./mkTaskApp.nix) {};
 in
   {
-    globalEnv,
+    globalPackages,
     tasks,
     gitPlugin,
     ...
@@ -18,7 +18,7 @@ in
       lib.mapAttrs' (name: task: {
         name = "tasx:${name}";
         value = mkTaskApp {
-          inherit globalEnv preCmdHook task;
+          inherit globalPackages preCmdHook task;
         };
       })
       tasks;

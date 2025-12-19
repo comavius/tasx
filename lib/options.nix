@@ -27,7 +27,7 @@
                 type = lib.types.str;
                 description = "Command to be executed for this task.";
               };
-              env = lib.mkOption {
+              packages = lib.mkOption {
                 type = lib.types.nullOr (lib.types.listOf lib.types.package);
                 default = [];
                 description = "Environment packages specific to this task.";
@@ -39,7 +39,7 @@
     );
   };
 
-  globalEnv = lib.mkOption {
+  globalPackages = lib.mkOption {
     type = lib.types.nullOr (lib.types.listOf lib.types.package);
     default = [];
     description = "Global environment packages applied to all tasks.";

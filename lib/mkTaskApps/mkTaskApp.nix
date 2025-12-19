@@ -3,7 +3,7 @@
   writeShellScriptBin,
   ...
 }: {
-  globalEnv,
+  globalPackages,
   preCmdHook,
   task,
 }: let
@@ -11,10 +11,10 @@
     if lib.isString task
     then {
       cmd = task;
-      env = [];
+      packages = [];
     }
     else task;
-  inputs = globalEnv ++ task'.env;
+  inputs = globalPackages ++ task'.packages;
   binPath = lib.makeBinPath inputs;
   script = ''
     ${preCmdHook}

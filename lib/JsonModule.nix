@@ -1,6 +1,6 @@
 {lib, ...}: {
   options = {
-    globalEnv = lib.mkOption {
+    globalPackages = lib.mkOption {
       type = lib.types.listOf lib.types.str;
     };
 
@@ -16,7 +16,7 @@
                 cmd = lib.mkOption {
                   type = lib.types.str;
                 };
-                env = lib.mkOption {
+                packages = lib.mkOption {
                   type = lib.types.listOf lib.types.str;
                   default = [];
                 };

@@ -22,7 +22,7 @@ in {
     cfg = jsonModuleEvaluated.config;
     tasxConfModule = {...}: {
       enable = true;
-      globalEnv = builtins.map (pname: pkgs.${pname}) cfg.globalEnv;
+      globalPackages = builtins.map (pname: pkgs.${pname}) cfg.globalPackages;
       gitPlugin = {
         enable = cfg.enableGitPlugin;
       };
@@ -32,16 +32,16 @@ in {
             if pkgs.lib.isString task
             then {
               cmd = task;
-              env = [];
+              packages = [];
             }
-            else if pkgs.lib.hasAttr "env" task
+            else if pkgs.lib.hasAttr "packages" task
             then {
               cmd = task.cmd;
-              env = builtins.map (pname: pkgs.${pname}) task.env;
+              packages = builtins.map (pname: pkgs.${pname}) task.packages;
             }
             else {
               cmd = task.cmd;
-              env = [];
+              packages = [];
             }
         )
         cfg.tasks;

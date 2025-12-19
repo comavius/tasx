@@ -1,5 +1,5 @@
 {
-    "globalEnv": [
+    "globalPackages": [
         "hello"
     ],
     "enableGitPlugin": true,
@@ -10,7 +10,7 @@
         "greet2": "hello",
         "greet3": {
             "cmd": "cowsay Hello, World!",
-            "env": [
+            "packages": [
                 "cowsay"
             ]
         },

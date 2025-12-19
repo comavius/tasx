@@ -2,7 +2,7 @@
   enable = true;
 
   # optional
-  globalEnv = [pkgs.hello];
+  globalPackages = [pkgs.hello];
 
   # optional
   gitPlugin = {
@@ -22,7 +22,7 @@
     greet3 = {
       cmd = "cowsay Hello, World!";
       # optional
-      env = [pkgs.cowsay];
+      packages = [pkgs.cowsay];
     };
 
     # in-git-root command provided by the gitPlugin

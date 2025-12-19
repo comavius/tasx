@@ -19,7 +19,7 @@ nix run "github:comavius/tasx" <task-name>
 This is an example `tasx.json` configuration file:
 ```json
 {
-    "globalEnv": [
+    "globalPackages": [
         "hello"
     ],
     "enableGitPlugin": true,
@@ -30,7 +30,7 @@ This is an example `tasx.json` configuration file:
         "greet2": "hello",
         "greet3": {
             "cmd": "cowsay Hello, World!",
-            "env": [
+            "packages": [
                 "cowsay"
             ]
         },
@@ -41,7 +41,7 @@ This is an example `tasx.json` configuration file:
 }
 ```
 
-All elements in `globalEnv` and `env` will be resolved to corresponding packages in Nixpkgs.
+All elements in `globalPackages` and `packages` will be resolved to corresponding packages in Nixpkgs.
 
 You can import this JSON file with `tasx.lib.mkOutputs` in your flake.
 ```nix
@@ -67,7 +67,7 @@ This is an example `tasx.nix` configuration file:
   enable = true;
 
   # optional
-  globalEnv = [pkgs.hello];
+  globalPackages = [pkgs.hello];
 
   # optional
   gitPlugin = {
@@ -87,7 +87,7 @@ This is an example `tasx.nix` configuration file:
     greet3 = {
       cmd = "cowsay Hello, World!";
       # optional
-      env = [pkgs.cowsay];
+      packages = [pkgs.cowsay];
     };
 
     # in-git-root command provided by the gitPlugin

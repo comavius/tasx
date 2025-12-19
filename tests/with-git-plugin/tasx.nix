@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   enable = true;
-  globalEnv = [pkgs.hello];
+  globalPackages = [pkgs.hello];
   gitPlugin = {
     enable = true;
   };

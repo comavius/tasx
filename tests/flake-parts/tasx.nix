@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   enable = true;
-  globalEnv = [pkgs.hello];
+  globalPackages = [pkgs.hello];
 
   tasks = {
     greet1 = {
@@ -11,7 +11,7 @@
 
     greet3 = {
       cmd = "cowsay Hello, World!";
-      env = [pkgs.cowsay];
+      packages = [pkgs.cowsay];
     };
   };
 }
