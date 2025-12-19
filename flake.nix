@@ -46,9 +46,18 @@
     formatter = forAllPkgs (pkgs: pkgs.alejandra);
 
     templates = {
-      flake-parts = ./examples/flake-parts;
-      flake-utils = ./examples/flake-utils;
-      json = ./examples/json-conf;
+      flake-parts = {
+        path = ./examples/flake-parts;
+        description = "Tasx example flake using flake-parts";
+      };
+      flake-utils = {
+        path = ./examples/flake-utils;
+        description = "Tasx example flake using flake-utils";
+      };
+      json = {
+        path = ./examples/json;
+        description = "Tasx example flake using JSON configuration";
+      };
     };
   };
 }
