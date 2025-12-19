@@ -55,7 +55,7 @@
         description = "Tasx example flake using flake-utils";
       };
       json = {
-        path = ./examples/json;
+        path = ./examples/json-conf;
         description = "Tasx example flake using JSON configuration";
       };
     };
